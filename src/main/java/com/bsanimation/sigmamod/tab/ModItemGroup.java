@@ -1,5 +1,6 @@
-package com.bsanimation.sigmamod.item;
+package com.bsanimation.sigmamod.tab;
 
+import com.bsanimation.sigmamod.item.ModItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 

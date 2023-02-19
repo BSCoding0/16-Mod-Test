@@ -1,5 +1,6 @@
 package com.bsanimation.sigmamod;
 
+import com.bsanimation.sigmamod.block.ModBlocks;
 import com.bsanimation.sigmamod.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -34,6 +35,7 @@ public class SigmaMod
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading

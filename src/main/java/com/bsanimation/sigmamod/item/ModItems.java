@@ -1,6 +1,7 @@
 package com.bsanimation.sigmamod.item;
 
 import com.bsanimation.sigmamod.SigmaMod;
+import com.bsanimation.sigmamod.tab.ModItemGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.eventbus.api.IEventBus;

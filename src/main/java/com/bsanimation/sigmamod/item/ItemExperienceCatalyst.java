@@ -10,6 +10,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import com.bsanimation.sigmamod.tab.ModItemGroup;
 
 public class ItemExperienceCatalyst extends Item {
     public ItemExperienceCatalyst(Properties settings) {
