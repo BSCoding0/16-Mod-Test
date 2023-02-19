@@ -8,11 +8,12 @@ import net.minecraft.item.Rarity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemExperienceCatalyst extends Item {
     public ItemExperienceCatalyst(Properties settings) {
-        super(settings.group(ItemGroup.MATERIALS).rarity(Rarity.UNCOMMON).isImmuneToFire().maxStackSize(1));
+        super(settings.group(ModItemGroup.SIGMA_GROUP).rarity(Rarity.UNCOMMON).isImmuneToFire().maxStackSize(1));
 
     }
 
@@ -28,6 +29,11 @@ public class ItemExperienceCatalyst extends Item {
 
     @Override
     public boolean isPiglinCurrency(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public boolean doesSneakBypassUse(ItemStack stack, net.minecraft.world.IWorldReader world, BlockPos pos, PlayerEntity player) {
         return true;
     }
 
