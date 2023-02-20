@@ -14,18 +14,18 @@ import com.bsanimation.sigmamod.tab.ModItemGroup;
 
 public class ItemExperienceCatalyst extends Item {
     public ItemExperienceCatalyst(Properties settings) {
-        super(settings.group(ModItemGroup.SIGMA_GROUP).rarity(Rarity.UNCOMMON).isImmuneToFire().maxStackSize(1));
+        super(settings.tab(ModItemGroup.SIGMA_GROUP).rarity(Rarity.UNCOMMON).fireResistant().stacksTo(1));
 
     }
 
     //doesn't work with itemStacks that are bigger than 1 -> maxStackSize(1)
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack itemStack = new ItemStack(getItem());
         itemStack.getStack().setCount((itemStack.getStack().getCount())-1);
         ActionResult actionResult = new ActionResult(ActionResultType.SUCCESS, itemStack);
         player.giveExperiencePoints(100);
-        return ActionResult.resultSuccess(itemStack);
+        return ActionResult.success(itemStack);
     }
 
     @Override

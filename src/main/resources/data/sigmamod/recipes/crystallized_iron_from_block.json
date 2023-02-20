@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "sigmamod:crystallized_iron_block"
+    }
+  ],
+  "result": {
+    "item": "sigmamod:crystallized_iron",
+    "count": 9
+  }
+}
