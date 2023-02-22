@@ -17,7 +17,7 @@ import com.bsanimation.sigmamod.tab.ModItemGroup;
 import java.util.Objects;
 
 
-public class ItemFireRune extends Item {
+public class ItemFireRune extends FlintAndSteelItem {
     public ItemFireRune(Properties properties) {
         super(properties);
     }
