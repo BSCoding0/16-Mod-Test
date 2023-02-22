@@ -3,6 +3,7 @@ package com.bsanimation.sigmamod.item;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -19,7 +20,6 @@ import java.util.Objects;
 public class ItemFireRune extends Item {
     public ItemFireRune(Properties properties) {
         super(properties);
-        properties.isImmuneToFire().maxDamage(5);
     }
 
     @Override
@@ -29,13 +29,10 @@ public class ItemFireRune extends Item {
         if(!world.isRemote){
             PlayerEntity playerEntity = Objects.requireNonNull(context.getPlayer());
             BlockState clickedBlock = world.getBlockState(context.getPos());
-
             //stack.damageItem(1, playerEntity, player -> player.sendBreakAnimation(context.getHand()));
             context.getItem().damageItem(1, playerEntity, (player) -> {player.sendBreakAnimation(context.getHand());});
+            //.damageItem(1, playerEntity, (player) -> {player.sendBreakAnimation(context.getHand());});
             rightClickOnCertainBlockState(clickedBlock, context, playerEntity);
-            //if (!context.getPlayer().abilities.isCreativeMode) {
-
-            //}
         }
 
 

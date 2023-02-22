@@ -29,7 +29,7 @@ import java.util.Objects;
 public class ItemLightningRune extends Item {
     public ItemLightningRune(Properties properties) {
         super(properties);
-        properties.isImmuneToFire().maxDamage(10);
+        //properties.isImmuneToFire().maxDamage(10);
     }
 
     @Override
@@ -41,9 +41,9 @@ public class ItemLightningRune extends Item {
             BlockState clickedBlock = world.getBlockState(context.getPos());
 
             rightClickOnCertainBlockState(clickedBlock, context, playerEntity);
-            //if (!context.getPlayer().abilities.isCreativeMode) {
-                stack.damageItem(1, playerEntity, player -> player.sendBreakAnimation(context.getHand()));
-            //}
+
+            stack.damageItem(1, playerEntity, player -> player.sendBreakAnimation(context.getHand()));
+
         }
 
 

@@ -18,10 +18,10 @@ public class ModItems {
             () -> new Item(new Item.Properties().group(ModItemGroup.SIGMA_GROUP)));
 
     public static final RegistryObject<Item> FIRE_RUNE = ITEMS.register("fire_rune",
-            () -> new ItemFireRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP)));
+            () -> new ItemFireRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP).isImmuneToFire().maxDamage(16)));
 
     public static final RegistryObject<Item> LIGHTNING_RUNE = ITEMS.register("lightning_rune",
-            () -> new ItemLightningRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP)));
+            () -> new ItemLightningRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP).maxDamage(16)));
     public static final RegistryObject<Item> EXPERIENCE_CATALYST = ITEMS.register("experience_catalyst",
                     () -> new ItemExperienceCatalyst(new Item.Properties()));
     public static void register(IEventBus eventBus) {
