@@ -6,5 +6,7 @@
 
   "block.sigmamod.crystallized_iron_block": "Crystallized Iron Block",
 
-  "itemGroup.sigmaModTab": "Sigma Mod"
+  "itemGroup.sigmaModTab": "Sigma Mod",
+
+  "effect.sigmamod.lightning_resistance": "Lightning Resistance"
 }

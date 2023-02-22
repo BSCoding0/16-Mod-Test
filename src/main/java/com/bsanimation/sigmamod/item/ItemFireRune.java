@@ -29,9 +29,9 @@ public class ItemFireRune extends Item {
         if(!world.isRemote){
             PlayerEntity playerEntity = Objects.requireNonNull(context.getPlayer());
             BlockState clickedBlock = world.getBlockState(context.getPos());
-            //stack.damageItem(1, playerEntity, player -> player.sendBreakAnimation(context.getHand()));
+
             context.getItem().damageItem(1, playerEntity, (player) -> {player.sendBreakAnimation(context.getHand());});
-            //.damageItem(1, playerEntity, (player) -> {player.sendBreakAnimation(context.getHand());});
+
             rightClickOnCertainBlockState(clickedBlock, context, playerEntity);
         }
 
