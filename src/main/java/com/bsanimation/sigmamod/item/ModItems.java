@@ -15,7 +15,13 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, SigmaMod.MOD_ID);
 
     public static final RegistryObject<Item> CRYSTALLIZED_IRON = ITEMS.register("crystallized_iron",
-            () -> new Item(new Item.Properties().tab(ModItemGroup.SIGMA_GROUP)));
+            () -> new Item(new Item.Properties().group(ModItemGroup.SIGMA_GROUP)));
+
+    public static final RegistryObject<Item> FIRE_RUNE = ITEMS.register("fire_rune",
+            () -> new ItemFireRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP)));
+
+    public static final RegistryObject<Item> LIGHTNING_RUNE = ITEMS.register("lightning_rune",
+            () -> new ItemLightningRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP)));
     public static final RegistryObject<Item> EXPERIENCE_CATALYST = ITEMS.register("experience_catalyst",
                     () -> new ItemExperienceCatalyst(new Item.Properties()));
     public static void register(IEventBus eventBus) {

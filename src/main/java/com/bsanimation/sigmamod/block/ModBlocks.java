@@ -23,8 +23,8 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> CRYSTALLIZED_IRON_BLOCK = registerBlock("crystallized_iron_block",
-            () -> new Block(AbstractBlock.Properties.of(Material.STONE)
-                    .harvestLevel(3).harvestTool(ToolType.PICKAXE).requiresCorrectToolForDrops().strength(5f)));
+            () -> new Block(AbstractBlock.Properties.create(Material.ROCK)
+                    .harvestLevel(3).harvestTool(ToolType.PICKAXE).setRequiresTool().hardnessAndResistance(5f)));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -34,7 +34,7 @@ public class ModBlocks {
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block){
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().tab(ModItemGroup.SIGMA_GROUP)));
+                new Item.Properties().group(ModItemGroup.SIGMA_GROUP)));
     }
 
     public static void register(IEventBus eventBus){

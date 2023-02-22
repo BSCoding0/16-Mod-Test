@@ -8,7 +8,7 @@ public class ModItemGroup {
 
     public static final ItemGroup SIGMA_GROUP = new ItemGroup("sigmaModTab") {
         @Override
-        public ItemStack makeIcon() {
+        public ItemStack createIcon() {
             return new ItemStack(ModItems.CRYSTALLIZED_IRON.get());
         }
     };

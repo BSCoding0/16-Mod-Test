@@ -1,10 +1,7 @@
 package com.bsanimation.sigmamod.item;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
+import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -14,18 +11,18 @@ import com.bsanimation.sigmamod.tab.ModItemGroup;
 
 public class ItemExperienceCatalyst extends Item {
     public ItemExperienceCatalyst(Properties settings) {
-        super(settings.tab(ModItemGroup.SIGMA_GROUP).rarity(Rarity.UNCOMMON).fireResistant().stacksTo(1));
+        super(settings.group(ModItemGroup.SIGMA_GROUP).rarity(Rarity.UNCOMMON).isImmuneToFire().maxStackSize(64));
 
     }
 
-    //doesn't work with itemStacks that are bigger than 1 -> maxStackSize(1)
     @Override
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+    public ActionResultType onItemUse(ItemUseContext context) {
         ItemStack itemStack = new ItemStack(getItem());
-        itemStack.getStack().setCount((itemStack.getStack().getCount())-1);
-        ActionResult actionResult = new ActionResult(ActionResultType.SUCCESS, itemStack);
+        PlayerEntity player = context.getPlayer();
+        Hand hand = context.getHand();
+        player.getHeldItem(hand).shrink(1);
         player.giveExperiencePoints(100);
-        return ActionResult.success(itemStack);
+        return super.onItemUse(context);
     }
 
     @Override
