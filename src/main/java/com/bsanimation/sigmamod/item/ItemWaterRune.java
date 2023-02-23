@@ -31,14 +31,11 @@ public class ItemWaterRune extends Item {
             BlockState clickedBlock = world.getBlockState(context.getPos());
 
             if(blockIsValidForResistance(clickedBlock, context.getWorld(), context.getPos(), playerEntity)){
-                if(clickedBlock.getBlock() != Blocks.STONE) {
-                    context.getItem().damageItem(1, playerEntity, (player) -> {
-                        player.sendBreakAnimation(context.getHand());
-                    });
-                }
+                context.getItem().damageItem(1, playerEntity, (player) -> {
+                    player.sendBreakAnimation(context.getHand());});
+
+            }else {
                 destroyBlock(playerEntity, context.getWorld(), context.getPos());
-                playerEntity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 80, 1, false, false));
-                playerEntity.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 400, 0, false, false));
             }
         }
 
@@ -46,20 +43,14 @@ public class ItemWaterRune extends Item {
     }
 
     private boolean blockIsValidForResistance(BlockState clickedBlock, World world, BlockPos pos, PlayerEntity playerEntity){
-        if(clickedBlock.getBlock() == Blocks.STONE){
-            gainHunger(playerEntity);
-            return true;
-        } else if(clickedBlock.getBlockHardness(world, pos) < 5f){
-            return true;
-        }else {
-            return false;
-        }
+        return clickedBlock.getBlock() == Blocks.WATER;
     }
 
     private void destroyBlock(PlayerEntity playerEntity, World world, BlockPos pos){
-            world.destroyBlock(pos, true, playerEntity);
+            world.destroyBlock(pos, false, playerEntity);
             //world.addBlockEvent();
-            world.playSound(playerEntity, pos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 1.0F, random.nextFloat() * 0.4F + 0.8F);
+            //world.updateBlock(pos, Blocks.WATER);
+            world.playSound(playerEntity, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, random.nextFloat() * 0.4F + 0.8F);
     }
 
     public static void gainHunger(PlayerEntity playerEntity){

@@ -25,6 +25,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> EARTH_RUNE = ITEMS.register("earth_rune",
             () -> new ItemEarthRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP).maxDamage(64)));
+
+    public static final RegistryObject<Item> WATER_RUNE = ITEMS.register("water_rune",
+            () -> new ItemWaterRune(new Item.Properties().group(ModItemGroup.SIGMA_GROUP).maxDamage(16)));
     public static final RegistryObject<Item> EXPERIENCE_CATALYST = ITEMS.register("experience_catalyst",
                     () -> new ItemExperienceCatalyst(new Item.Properties()));
     public static void register(IEventBus eventBus) {
