@@ -12,6 +12,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.NBTTextComponent;
 import net.minecraft.world.Dimension;
 
+import javax.annotation.Nullable;
+
 public class EffectLightningResistance extends Effect {
 
     public static DamageSource lightnigDamage;
@@ -19,6 +21,7 @@ public class EffectLightningResistance extends Effect {
         super(typeIn, liquidColorIn);
     }
 
+    /*
     @Override
     public void applyAttributesModifiersToEntity(LivingEntity entityLivingBaseIn, AttributeModifierManager attributeMapIn, int amplifier) {
         //entityLivingBaseIn.getLastDamageSource().damageType
@@ -26,4 +29,13 @@ public class EffectLightningResistance extends Effect {
         //entityLivingBaseIn.hitByEntity(EntityType.LIGHTNING_BOLT.spawn());
         super.applyAttributesModifiersToEntity(entityLivingBaseIn, attributeMapIn, amplifier);
     }
+     */
+
+    /*
+    @Override
+    public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, LivingEntity entityLivingBaseIn, int amplifier, double health) {
+        //DamageSource.LIGHTNING_BOLT
+        super.affectEntity(source, indirectSource, entityLivingBaseIn, amplifier, health);
+    }
+     */
 }

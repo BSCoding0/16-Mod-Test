@@ -8,13 +8,15 @@ import net.minecraft.command.arguments.EntitySummonArgument;
 import net.minecraft.command.impl.SummonCommand;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.*;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Dimension;
 import net.minecraft.world.World;
@@ -86,6 +88,7 @@ public class ItemLightningRune extends Item {
         //BlockPos blockpos = context.getPos().offset(context.getFace());
 
         //code from SpawnEggItem
+        /*
         BlockPos blockpos = context.getPos();
         Direction direction = context.getFace();
         BlockPos pos;
@@ -101,8 +104,42 @@ public class ItemLightningRune extends Item {
         } else {
             pos = blockpos.offset(direction);
         }
+
+         */
+        Fluid containedBlock = null;
+        RayTraceResult raytraceresult = rayTrace(world, playerentity, containedBlock == Fluids.EMPTY ? RayTraceContext.FluidMode.SOURCE_ONLY : RayTraceContext.FluidMode.NONE);
+        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerentity, world, context.getItem(), raytraceresult);
+
+        BlockRayTraceResult blockraytraceresult = (BlockRayTraceResult)raytraceresult;
+        BlockPos blockpos = blockraytraceresult.getPos();
+        Direction direction = blockraytraceresult.getFace();
+        BlockPos blockpos1 = blockpos.offset(direction);
+
+
+        /*
+        double range = 50;
+
+        float f = playerentity.rotationYaw;
+        float f1 = playerentity.rotationYawHead;
+        Vector3d vector3d = playerentity.getEyePosition(1.0F);
+        float f2 = MathHelper.cos(-f1 * ((float)Math.PI / 180F) - (float)Math.PI);
+        float f3 = MathHelper.sin(-f1 * ((float)Math.PI / 180F) - (float)Math.PI);
+        float f4 = -MathHelper.cos(-f * ((float)Math.PI / 180F));
+        float f5 = MathHelper.sin(-f * ((float)Math.PI / 180F));
+        float f6 = f3 * f4;
+        float f7 = f2 * f4;
+        Vector3d vector3d1 = vector3d.add((double)f6 * range, (double)f5 * range, (double)f7 * range);
+
+
+
+        BlockRayTraceResult ray = new BlockRayTraceResult(vector3d, vector3d1, RayTraceContext.BlockMode.OUTLINE, RayTraceContext.FluidMode.NONE , playerentity);
+        BlockPos pos = ray.getPos();*/
+
+
+
+
         //EntityType.LIGHTNING_BOLT.create(world).setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), 0.0F, 0.0F);
-        EntityType.LIGHTNING_BOLT.spawn(context.getWorld().getServer().getWorld(context.getWorld().getDimensionKey()), context.getItem(), playerentity, blockpos, SpawnReason.MOB_SUMMONED, true, true);
+        EntityType.LIGHTNING_BOLT.spawn(context.getWorld().getServer().getWorld(context.getWorld().getDimensionKey()), context.getItem(), playerentity, blockpos1, SpawnReason.MOB_SUMMONED, true, true);
 
         //world.playSound(playerentity, blockpos, SoundEvents.ENTITY_LIGHTNING_BOLT_THUNDER, SoundCategory.WEATHER, 1.0F, random.nextFloat() * 0.4F + 0.8F);
 
